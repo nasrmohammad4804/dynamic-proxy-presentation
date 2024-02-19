@@ -19,6 +19,9 @@ public class Client {
         *   bootstrap class loader : load core java classes
         *   extension class loader : load class from the java extension directory
         *   Application class loader : load class from the application class path
+        *
+        * 2. list of class name of interface . those are interface that need to be implemented by proxy object
+        * 3. invocation handler as interceptor we use this for delegate functionality to this class
         * */
 
 
