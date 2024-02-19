@@ -12,8 +12,22 @@ public class Client {
 
         InvocationHandler handler= new EmployeeSalaryInvocationHandler(employee);
 
+        /*
+        * 3 parameter needed
+        * 1.  class loader is used to specify class loader that will be responsible for loading dynamically generated proxy class
+        * different type of class loader in java
+        *   bootstrap class loader : load core java classes
+        *   extension class loader : load class from the java extension directory
+        *   Application class loader : load class from the application class path
+        * */
+
+
+        // for achieve current class loader (becasue Client.java is custom class that we sue application class loader used)
+
+        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+
         Employee proxyEmployee  =(Employee) Proxy.newProxyInstance(
-                Employee.class.getClassLoader(),
+                contextClassLoader,
                 new Class<?>[] {Employee.class},
                 handler
         );
